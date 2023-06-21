@@ -1,0 +1,41 @@
+cursor: a cursor is an object that allows you to retrieve and manipulate data from a result set  returned by a database query.
+
+    +------------------------+
+    |   Import mysql.connector  |  //import mysql.connector as db
+    +------------------------+
+                 |
+                 |
+    +------------------------+
+    |   Establish Connection  |  //mydb = db.connect(host: "localhost", user: "root", passwd:
+    +------------------------+
+                 |
+                 |
+    +------------------------+
+    |   Create Cursor         |  //mycursor=db.cursor()
+    +------------------------+
+                 |
+                 |
+    +------------------------+
+    |   Execute SQL Query     |  //mycursor.execute("SHOW DATABASES")
+    +------------------------+
+                 |
+                 |
+    +------------------------+
+    |   Iterate Over Results  |  //for db in mycursor:
+    +------------------------+
+                 |
+                 |
+    +------------------------+
+    |   Print Database Names  |  //print(db)
+    +------------------------+
+                 |
+                 |
+    +------------------------+
+    |   Close Cursor          |
+    +------------------------+
+                 |
+                 |
+    +------------------------+
+    |   Close Connection      |
+    +------------------------+
+
