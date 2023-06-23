@@ -35,44 +35,50 @@ elif choice == 3:
     mycursor.execute(sqlFormula2, sqlValues)
     mydb.commit()
 
-# elif choice == 3:
-#     choiceUpdate = int(input("Enter the choice:"))
-#     if choiceUpdate == 1:
-#         userID_old = input("Enter the userID(old):")
-#         userID_new = input("Enter the userID(new):")
-#         sqlFormula = "UPDATE Task_Manager SET userID=%s WHERE userID=%s"
-#         sqlValues = (userID_new, userID_old)
-#         mycursor.execute(sqlFormula, sqlValues)
-#         mydb.commit()
+elif choice == 4:
+    task_id = input("Enter Your Task ID:")
+    sqlFormula = "DELETE FROM Task WHERE task_id=%s"
+    sqlValues = (task_id,)
+    mycursor.execute(sqlFormula, sqlValues)
+    mydb.commit()
 
-#     elif choiceUpdate == 2:
-#         userID = input("Enter the userID:")
-#         name_old = input("Enter your name(old):")
-#         name_new = input("Enter your name(new):")
-#         sqlFormula = "UPDATE Task_Manager SET NAME=%s WHERE userID=%s AND NAME=%s"
-#         sqlValues = (name_new, userID, name_old)
-#         mycursor.execute(sqlFormula, sqlValues)
-#         mydb.commit()
+elif choice == 5:
+    choiceUpdate = int(input("Enter the choice:"))
+    if choice == 1:
+        userID_old = input("Enter the userID(old):")
+        userID_new = input("Enter the userID(new):")
+        sqlFormula = "UPDATE User_Info SET userID=%s WHERE userID=%s"
+        sqlFormula2 = "UPDATE Task SET user_ID=%s WHERE user_ID=%s"
+        sqlValues = (userID_new, userID_old)
+        mycursor.execute(sqlFormula, sqlValues)
+        mycursor.execute(sqlFormula2, sqlValues)
+        mydb.commit()
 
-#     elif choiceUpdate == 3:
-#         userID = input("Enter the userID:")
-#         task_old = input("Enter your Task(old):")
-#         task_new = input("Enter your Task(new):")
-#         sqlFormula = "UPDATE Task_Manager SET TASK=%s WHERE userID=%s AND TASK=%s"
-#         sqlValues = (task_new, userID, task_old)
-#         mycursor.execute(sqlFormula, sqlValues)
-#         mydb.commit()
+    elif choiceUpdate == 2:
+        userID = input("Enter the userID:")
+        name_old = input("Enter your name(old):")
+        name_new = input("Enter your name(new):")
+        sqlFormula = "UPDATE User_Info SET NAME=%s WHERE userID=%s AND NAME=%s"
+        sqlValues = (name_new, userID, name_old)
+        mycursor.execute(sqlFormula, sqlValues)
+        mydb.commit()
 
-#     elif choiceUpdate == 4:
-#         userID = input("Enter the userID:")
-#         Deadline_old = input("Enter your Deadline(old):")
-#         Deadline_new = input("Enter your Dealine(new):")
-#         sqlFormula = (
-#             "UPDATE Task_Manager SET DEADLINE=%s WHERE userID=%s AND DEADLINE=%s"
-#         )
-#         sqlValues = (Deadline_new, userID, Deadline_old)
-#         mycursor.execute(sqlFormula, sqlValues)
-#         mydb.commit()
+    elif choiceUpdate == 3:
+        Task_ID = input("Enter the TaskID:")
+        task_old = input("Enter your Task(old):")
+        task_new = input("Enter your Task(new):")
+        sqlFormula = "UPDATE Task SET TASK=%s WHERE task_id=%s AND TASK=%s"
+        sqlValues = (task_new, Task_ID, task_old)
+        mycursor.execute(sqlFormula, sqlValues)
+        mydb.commit()
 
-# elif choice == 4:
-#     choiceSelect = input("Enter the ")
+    elif choiceUpdate == 4:
+        Task_ID = input("Enter the TaskID:")
+        Deadline_old = input("Enter your Deadline(old):")
+        Deadline_new = input("Enter your Dealine(new):")
+        sqlFormula = (
+            "UPDATE Task_Manager SET DEADLINE=%s WHERE task_id=%s AND DEADLINE=%s"
+        )
+        sqlValues = (Deadline_new, Task_ID, Deadline_old)
+        mycursor.execute(sqlFormula, sqlValues)
+        mydb.commit()
