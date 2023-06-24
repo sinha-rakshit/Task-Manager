@@ -4,6 +4,14 @@ mydb = db.connect(host="localhost", user="root", passwd="Qwerty@123", database="
 
 mycursor = mydb.cursor()
 
+print("WELCOME TO THE TASK MANAGER:")
+print("PRESS 1 IF NEW USER:")
+print("PRESS 2 IF OLD USER AND WANT TO ADD TASK:")
+print("PRESS 3 TO DELETE USER:")
+print("PRESS 4 TO DELETE TASK:")
+print("PRESS 5 TO UPDATE:")
+print("PRESS 6 TO SEARCH TASKS:")
+
 choice = int(input("Enter your choice:"))
 
 if choice == 1:  # to enter your User Info
@@ -16,7 +24,7 @@ if choice == 1:  # to enter your User Info
     mydb.commit()
 
 elif choice == 2:
-    task_id = input("ENter Your TaskID(Eg. task_type):")
+    task_id = input("Enter Your TaskID(Eg. task_type):")
     user_ID = input("Enter Your USERID(Eg. rak123):")
     Task = input("Enter your Task:")
     Deadline = input("Enter the Deadline:")
@@ -43,8 +51,12 @@ elif choice == 4:
     mydb.commit()
 
 elif choice == 5:
+    print("PRESS 1 TO UPDATE USERID:")
+    print("PRESS 2 TO UPDATE NAME:")
+    print("PRESS 3 TO UPDATE TASK:")
+    print("PRESS 4 TO UPDATE DEADLINE:")
     choiceUpdate = int(input("Enter the choice:"))
-    if choice == 1:
+    if choiceUpdate == 1:
         userID_old = input("Enter the userID(old):")
         userID_new = input("Enter the userID(new):")
         sqlFormula = "UPDATE User_Info SET userID=%s WHERE userID=%s"
@@ -82,3 +94,18 @@ elif choice == 5:
         sqlValues = (Deadline_new, Task_ID, Deadline_old)
         mycursor.execute(sqlFormula, sqlValues)
         mydb.commit()
+
+elif choice == 6:
+    userID = input("Enter the User ID:")
+    sqlFormula = "SELECT User_Info.userID, User_Info.NAME, Task.Task, Task.Deadline FROM User_Info INNER JOIN Task ON User_Info.userID = Task.User_ID WHERE User_Info.userID = %s"
+    sqlValues = (userID,)
+    mycursor.execute(sqlFormula, sqlValues)
+    result = mycursor.fetchall()
+
+    if len(result) == 0:
+        print("No matching records found.")
+
+    else:
+        print("ID   NAME   TASK     Deadline")
+        for db in result:
+            print(db[0], "   ", db[1], "   ", db[2], "     ", db[3])
