@@ -69,7 +69,7 @@ Follow the steps below to run the project with Docker:
 4. Build the Docker image by running the following command:
 
     ```bash
-    docker build -t task-manager 
+    docker build -t task-manager  .
     ```
 This command will build the Docker image named `task-manager` using the Dockerfile and project files.
 
